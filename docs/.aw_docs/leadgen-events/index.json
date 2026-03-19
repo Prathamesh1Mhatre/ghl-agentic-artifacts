@@ -1,6 +1,6 @@
 {
-  "namespace": "platform",
-  "total_artifacts": 2,
+  "namespace": "leadgen-events",
+  "total_artifacts": 1,
   "contributors": ["prathamesh-mhatre"],
   "last_updated": "2026-03-19T18:00:00Z"
 }

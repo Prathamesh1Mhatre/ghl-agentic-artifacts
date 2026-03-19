@@ -1,6 +1,6 @@
 {
-  "namespace": "platform",
+  "namespace": "revex-courses",
   "author": "prathamesh-mhatre",
-  "artifact_types": ["research", "specs"],
+  "artifact_types": ["plans"],
   "last_updated": "2026-03-19T18:00:00Z"
 }

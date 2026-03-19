@@ -1,0 +1,17 @@
+{
+  "namespace": "platform",
+  "author": "prathamesh-mhatre",
+  "type": "specs",
+  "artifacts": [
+    {
+      "name": "2026-03-19-highrise-integration",
+      "title": "HighRise Design System Integration",
+      "url": "/.aw_docs/platform/prathamesh-mhatre/specs/2026-03-19-highrise-integration/",
+      "date": "2026-03-19",
+      "tags": ["design-system", "highrise", "integration", "ui"],
+      "status": "complete",
+      "created": "2026-03-19T18:00:00Z"
+    }
+  ],
+  "last_updated": "2026-03-19T18:00:00Z"
+}

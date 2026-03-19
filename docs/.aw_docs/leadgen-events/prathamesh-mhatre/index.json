@@ -1,6 +1,6 @@
 {
-  "namespace": "platform",
+  "namespace": "leadgen-events",
   "author": "prathamesh-mhatre",
-  "artifact_types": ["research", "specs"],
+  "artifact_types": ["designs"],
   "last_updated": "2026-03-19T18:00:00Z"
 }
