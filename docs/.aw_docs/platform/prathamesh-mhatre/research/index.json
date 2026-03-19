@@ -1,0 +1,16 @@
+{
+  "namespace": "platform",
+  "author": "prathamesh-mhatre",
+  "type": "research",
+  "artifacts": [
+    {
+      "name": "2026-03-19-test-artifact",
+      "title": "Test Artifact - GHL Agentic Registry",
+      "url": "/.aw_docs/platform/prathamesh-mhatre/research/2026-03-19-test-artifact/",
+      "date": "2026-03-19",
+      "tags": ["test", "artifacts", "registry"],
+      "created": "2026-03-19T16:00:00Z"
+    }
+  ],
+  "last_updated": "2026-03-19T16:00:00Z"
+}

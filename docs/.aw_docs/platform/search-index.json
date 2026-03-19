@@ -1,0 +1,14 @@
+{
+  "artifacts": [
+    {
+      "title": "Test Artifact - GHL Agentic Registry",
+      "type": "research",
+      "namespace": "platform",
+      "author": "prathamesh-mhatre",
+      "date": "2026-03-19",
+      "tags": ["test", "artifacts", "registry"],
+      "description": "This is a test artifact to verify the GitHub Pages publishing flow.",
+      "url": "/.aw_docs/platform/prathamesh-mhatre/research/2026-03-19-test-artifact/"
+    }
+  ]
+}
