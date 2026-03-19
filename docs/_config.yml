@@ -1,0 +1,94 @@
+# Jekyll Configuration for GHL Agentic Artifacts Registry
+
+# Site Settings
+title: GHL Agentic Artifacts Registry
+description: Centralized artifact storage for GoHighLevel agentic teams
+baseurl: "/ghl-agentic-artifacts"
+url: "https://gohighlevel.github.io"
+
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Theme
+theme: null  # Using custom theme
+sass:
+  style: compressed
+  sass_dir: assets/css
+
+# Collections
+collections:
+  namespaces:
+    output: true
+    permalink: /.aw_docs/:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: ".aw_docs"
+    values:
+      layout: "artifact"
+
+# Plugins
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+  - scripts
+  - .git
+  - .github
+
+# Include hidden files/folders
+include:
+  - .aw_docs
+
+# Kramdown settings
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+
+# Custom settings
+artifacts:
+  namespaces:
+    - platform
+    - leadgen-events
+    - revex-courses
+    - crm
+    - automation
+    - mobile
+  types:
+    - research
+    - specs
+    - designs
+    - plans
+    - reviews
+    - learnings
+    - runs
+
+# Search
+search:
+  enabled: true
+  provider: lunr
+
+# Analytics (optional)
+# google_analytics: UA-XXXXXXXXX-X

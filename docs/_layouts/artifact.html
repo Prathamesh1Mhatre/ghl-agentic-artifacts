@@ -1,0 +1,118 @@
+---
+layout: default
+---
+
+<div class="container">
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <span class="separator">›</span>
+    <a href="/.aw_docs/{{ page.namespace }}/">{{ page.namespace }}</a>
+    {% if page.author %}
+    <span class="separator">›</span>
+    <a href="/.aw_docs/{{ page.namespace }}/{{ page.author }}/">{{ page.author }}</a>
+    {% endif %}
+    {% if page.type %}
+    <span class="separator">›</span>
+    <a href="/.aw_docs/{{ page.namespace }}/{{ page.author }}/{{ page.type }}/">{{ page.type }}</a>
+    {% endif %}
+    <span class="separator">›</span>
+    <span>{{ page.title }}</span>
+  </nav>
+
+  <!-- Artifact Header -->
+  <header style="margin-bottom: var(--spacing-xl); padding-bottom: var(--spacing-lg); border-bottom: 1px solid var(--border-color);">
+    <h1 style="margin-bottom: var(--spacing-sm);">{{ page.title }}</h1>
+
+    <!-- Metadata -->
+    <div style="display: flex; gap: var(--spacing-lg); flex-wrap: wrap; color: var(--text-secondary); font-size: 0.875rem; margin-bottom: var(--spacing-md);">
+      {% if page.type %}
+      <span class="badge badge-info">{{ page.type }}</span>
+      {% endif %}
+
+      {% if page.namespace %}
+      <span>
+        <strong>Namespace:</strong> {{ page.namespace }}
+      </span>
+      {% endif %}
+
+      {% if page.author %}
+      <span>
+        <strong>Author:</strong> {{ page.author }}
+      </span>
+      {% endif %}
+
+      {% if page.date %}
+      <span>
+        <strong>Date:</strong> {{ page.date | date: "%Y-%m-%d" }}
+      </span>
+      {% endif %}
+
+      {% if page.status %}
+      <span>
+        <strong>Status:</strong>
+        {% if page.status == 'complete' %}
+          <span class="badge badge-success">{{ page.status }}</span>
+        {% elsif page.status == 'in_progress' %}
+          <span class="badge badge-warning">{{ page.status }}</span>
+        {% else %}
+          <span class="badge">{{ page.status }}</span>
+        {% endif %}
+      </span>
+      {% endif %}
+
+      {% if page.confidence %}
+      <span>
+        <strong>Confidence:</strong>
+        {% if page.confidence == 'high' %}
+          <span class="badge badge-success">{{ page.confidence }}</span>
+        {% elsif page.confidence == 'medium' %}
+          <span class="badge badge-warning">{{ page.confidence }}</span>
+        {% elsif page.confidence == 'low' %}
+          <span class="badge badge-error">{{ page.confidence }}</span>
+        {% endif %}
+      </span>
+      {% endif %}
+    </div>
+
+    <!-- Tags -->
+    {% if page.tags and page.tags.size > 0 %}
+    <div style="display: flex; gap: var(--spacing-sm); flex-wrap: wrap;">
+      {% for tag in page.tags %}
+      <span style="background: var(--bg-tertiary); color: var(--text-secondary); padding: 0.25rem 0.75rem; border-radius: var(--radius-md); font-size: 0.75rem;">
+        #{{ tag }}
+      </span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </header>
+
+  <!-- Artifact Content -->
+  <article style="max-width: 900px;">
+    {{ content }}
+  </article>
+
+  <!-- Related Artifacts -->
+  {% if page.related_artifacts and page.related_artifacts.size > 0 %}
+  <aside style="margin-top: var(--spacing-2xl); padding: var(--spacing-xl); background: var(--bg-secondary); border-radius: var(--radius-lg); border: 1px solid var(--border-color);">
+    <h3 style="margin-bottom: var(--spacing-md);">🔗 Related Artifacts</h3>
+    <ul style="list-style: none; padding: 0;">
+      {% for related in page.related_artifacts %}
+      <li style="margin-bottom: var(--spacing-sm);">
+        <a href="/{{ related }}">{{ related }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </aside>
+  {% endif %}
+
+  <!-- Navigation -->
+  <nav style="margin-top: var(--spacing-2xl); padding-top: var(--spacing-lg); border-top: 1px solid var(--border-color); display: flex; justify-content: space-between;">
+    <a href="/.aw_docs/{{ page.namespace }}/{{ page.author }}/{{ page.type }}/" style="color: var(--accent-primary);">
+      ← Back to {{ page.type }}
+    </a>
+    <a href="/.aw_docs/{{ page.namespace }}/{{ page.author }}/" style="color: var(--accent-primary);">
+      View all by {{ page.author }} →
+    </a>
+  </nav>
+</div>
