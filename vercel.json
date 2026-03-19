@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cd docs && bundle install && bundle exec jekyll build",
+  "outputDirectory": "docs/_site",
+  "framework": null,
+  "devCommand": null
+}
