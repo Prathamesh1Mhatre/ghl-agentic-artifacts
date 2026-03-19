@@ -1,4 +1,5 @@
 ---
+layout: artifact
 title: "HighRise Design System Integration"
 type: specs
 namespace: platform

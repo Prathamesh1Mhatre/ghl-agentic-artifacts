@@ -1,4 +1,5 @@
 ---
+layout: artifact
 title: "Test Artifact - GHL Agentic Registry"
 type: research
 namespace: platform

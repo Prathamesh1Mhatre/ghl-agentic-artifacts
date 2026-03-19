@@ -1,4 +1,5 @@
 ---
+layout: artifact
 title: "Artifact Registry Landing Page Design"
 type: designs
 namespace: leadgen-events

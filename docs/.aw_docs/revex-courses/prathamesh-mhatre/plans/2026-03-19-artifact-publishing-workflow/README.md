@@ -1,4 +1,5 @@
 ---
+layout: artifact
 title: "Artifact Publishing Workflow Implementation Plan"
 type: plans
 namespace: revex-courses
