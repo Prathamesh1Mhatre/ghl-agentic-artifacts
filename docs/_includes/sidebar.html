@@ -1,0 +1,94 @@
+<aside class="sidebar-left">
+  <nav class="sidebar-nav">
+    <!-- HOME -->
+    <div class="nav-section">
+      <a href="{{ '/' | relative_url }}" class="nav-item">
+        <svg class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+        <span>Home</span>
+      </a>
+    </div>
+
+    <div class="nav-divider"></div>
+
+    <!-- TEAM SWITCHER -->
+    <div class="nav-section">
+      <div class="section-label">Team</div>
+
+      <div class="team-switcher" id="teamSwitcher">
+        <button class="team-trigger" onclick="toggleTeamSwitcher()">
+          <div class="team-trigger-left">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+            <span id="selectedTeam">{{ page.namespace | default: 'All Teams' }}</span>
+          </div>
+          <svg class="team-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div class="team-menu">
+          {% assign namespaces = site.pages | where_exp: "page", "page.namespace" | map: "namespace" | uniq | sort %}
+          {% for namespace in namespaces %}
+          <div class="team-option {% if page.namespace == namespace %}active{% endif %}" onclick="window.location.href='{{ '/.aw_docs/' | append: namespace | append: '/' | relative_url }}'">
+            <span>{{ namespace }}</span>
+            <span class="team-count">{{ site.pages | where: "namespace", namespace | size }} docs</span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-divider"></div>
+
+    <!-- SUB-TEAMS -->
+    {% if page.namespace %}
+    <div class="nav-section" id="subteamsSection">
+      <div class="section-label">Sub-teams</div>
+
+      {% assign namespace_pages = site.pages | where: "namespace", page.namespace %}
+      {% assign subteams = namespace_pages | where_exp: "p", "p.type" | map: "type" | uniq | sort %}
+
+      {% for subteam in subteams %}
+      <a href="{{ '/.aw_docs/' | append: page.namespace | append: '/' | append: subteam | append: '/' | relative_url }}" class="nav-item {% if page.type == subteam %}active{% endif %}">
+        <svg class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+        </svg>
+        <span>{{ subteam }}</span>
+      </a>
+      {% endfor %}
+    </div>
+
+    <div class="nav-divider"></div>
+    {% endif %}
+
+    <!-- CURRENT CONTEXT -->
+    {% if page.type and page.author %}
+    <div class="nav-section">
+      <div class="section-label">Current Project</div>
+
+      <div class="current-context">
+        <div class="context-path">
+          <span>{{ page.type }}</span>
+          <span class="path-separator">›</span>
+          <span>{{ page.author }}</span>
+        </div>
+
+        <div class="context-files">
+          {% assign author_pages = site.pages | where: "namespace", page.namespace | where: "type", page.type | where: "author", page.author %}
+          {% for doc in author_pages limit: 10 %}
+          <a href="{{ doc.url | relative_url }}" class="file-item {% if page.url == doc.url %}active{% endif %}">
+            <svg class="file-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            {{ doc.title | default: doc.name }}
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </nav>
+</aside>
